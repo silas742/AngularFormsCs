@@ -6,42 +6,43 @@
         <div class="corpo">
             Cursos na área de tecnologia.
         </div>
-    </article>        
+    </article>
+    <hr>        
     <div class="container">
-        <form>
+        
+        <form #alunoForm (ngSubmit) = "salvar(alunoForm)">
             <div class="row">
-                <div class="form-group col-12">
+                <div class="form-group col-8">
                     <label for="nomeInput">Nome</label>
-                    <input type="text" placeholder="nome" class="form-control p-4">
+                    <input id="nomeImput"name ="Nome" type="text" placeholder="nome" class="form-control p-4" [(ngModel)]="pessoa.nome">
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="foneInput">Idade</label>
-                    <input type="text" placeholder="idade" class="form-control p-4">
+                <div class="form-group col-8">
+                    <label for="idadeInput">Idade</label>
+                    <input id="idadeImput"name ="Idade"type="text" placeholder="idade" class="form-control p-4"[(ngModel)]="pessoa.Idade">
                 </div>
-                
+               
 
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-8">
                     <label for="cursoInput">Cursos</label>
-                    <select name="" id="cursoInput" class="form-control">
+                    <select name="curso" id="cursoInput" class="form-control"[(ngModel)]="pessoa.curso">
                         <option value="">Selecione</option>
-                        <option>Analise de sistemas</option>
-                        <option>Eventos</option>
-                        <option>Gestão comercial</option>
-                        <option>Recursos humanos</option>
-                        <option>Gestão empresarial</option>
+                        <option *ngFor="let curso of cursos">{{curso}}</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div  [ngStyle]="{ 'margin-top': '4px'}" class="col-12">
-                    <button [ngStyle]="EstilosParaBotao()" (click)=gerarValor() type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    <button [ngStyle]="EstilosParaBotao()" type="submit" class="btn btn-primary btn-block">Enviar</button>
                 </div>
             </div>
         </form>
     </div>
+    {{pessoa | json}}
     <div>
+        <br>
+        <hr>
         <footer [ngClass]="ObterClassesRodape()">
             Silas. 2020. Exercicio.
         </footer>

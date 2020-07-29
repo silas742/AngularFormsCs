@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Pessoa} from'../model/pessoa';
 
 @Component({
   selector: 'app-formulario',
@@ -6,11 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent {
-
-  valor: number;
- gerarValor(): void {
- this.valor = Math.round(Math.random() * 100) + 1;
- }
 
   EstilosParaBotao(){
     return {
@@ -26,9 +22,19 @@ export class FormularioComponent {
   }
   obterclassValor(){
     return{
-    valor:true,
-numeropar:this.valor %2 ==0,
-numeroimpar: this.valor%2 !=0
     }
   }
+  cursos = ['Analise de sistemas',
+    'Eventos',
+    'Gestão comercial',
+    'Recursos humanos',
+    'Gestão empresarial'];
+
+    pessoa: Pessoa = new Pessoa();
+salvar (alunoForm){
+ this.pessoa.nome = alunoForm.value.nome;
+ this.pessoa.Idade= alunoForm.value.idade;
+ this.pessoa.curso = alunoForm.value.curso;
+}
+
 }
